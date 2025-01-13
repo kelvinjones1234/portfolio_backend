@@ -33,9 +33,9 @@ class TechnicalExpertise(models.Model):
 
     def __str__(self):
         return self.name
-    
+
     class Meta:
-        verbose_name_plural = 'Techinical Expertise'
+        verbose_name_plural = "Techinical Expertise"
 
 
 class Socials(models.Model):
@@ -44,8 +44,6 @@ class Socials(models.Model):
 
     def __str__(self):
         return self.social_media
-    
-    class Meta:
-        verbose_name_plural = 'Socials'
-    
 
+    class Meta:
+        verbose_name_plural = "Socials"

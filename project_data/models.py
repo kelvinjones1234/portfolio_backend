@@ -8,9 +8,9 @@ class Credits(models.Model):
     happy_clients = models.CharField(max_length=7)
     success_rate = models.CharField(max_length=7)
 
-
     class Meta:
-        verbose_name_plural = 'Credits'
+        verbose_name_plural = "Credits"
+
 
 class CompletedProject(models.Model):
     project_title = models.CharField(max_length=200)
@@ -18,9 +18,10 @@ class CompletedProject(models.Model):
     git_link = models.CharField(max_length=1000)
     project_link = models.CharField(max_length=1000)
     description = HTMLField()
+    image = models.ImageField(upload_to="", null=True, blank=True)
 
     def __str__(self):
         return self.project_title
-    
+
     class Meta:
-        verbose_name_plural = 'Completed Projects'
+        verbose_name_plural = "Completed Projects"

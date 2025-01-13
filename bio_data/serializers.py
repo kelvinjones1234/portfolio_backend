@@ -15,9 +15,15 @@ class StackSerializer(serializers.ModelSerializer):
 
 
 class TechnicalExpertiseSerializer(serializers.ModelSerializer):
+    stack = serializers.SerializerMethodField()  
+
     class Meta:
         model = TechnicalExpertise
-        fields = "__all__"
+        fields = ['id', 'name', 'stack']
+
+    def get_stack(self, obj):
+        # Return the stack name as text
+        return obj.stack.name if obj.stack else None
 
 
 class SocialsSerializer(serializers.ModelSerializer):

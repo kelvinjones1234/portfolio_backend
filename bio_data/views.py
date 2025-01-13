@@ -2,8 +2,9 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from .models import BioData, Stack, TechnicalExpertise, Socials
-from project_data.models import Credits
-from project_data.serializers import CreditsSerializer
+from project_data.models import Credits, CompletedProject
+from project_data.serializers import CreditsSerializer, CompletedProjectSerializer
+
 from .serializers import (
     BioDataSerializer,
     StackSerializer,
@@ -15,11 +16,12 @@ from .serializers import (
 class AllDataView(APIView):
     def get(self, request, *args, **kwargs):
         # Fetch all data
-        biodata = BioData.objects.first()  
+        biodata = BioData.objects.first()
         stacks = Stack.objects.all()
         technical_expertise = TechnicalExpertise.objects.all()
         socials = Socials.objects.all()
-        credits = Credits.objects.first() 
+        credits = Credits.objects.first()
+        projects = CompletedProject.objects.all()
 
         # Serialize the data
         biodata_serializer = BioDataSerializer(biodata)
@@ -27,6 +29,7 @@ class AllDataView(APIView):
         technical_expertise_serializer = TechnicalExpertiseSerializer(
             technical_expertise, many=True
         )
+        projects_serializer = CompletedProjectSerializer(projects, many=True)
         socials_serializer = SocialsSerializer(socials, many=True)
         credits_serializer = CreditsSerializer(credits)
 
@@ -37,6 +40,7 @@ class AllDataView(APIView):
             "technical_expertise": technical_expertise_serializer.data,
             "socials": socials_serializer.data,
             "credits": credits_serializer.data,
+            "projects": projects_serializer.data
         }
 
         return Response(response_data, status=status.HTTP_200_OK)
