@@ -9,6 +9,7 @@ class BioData(models.Model):
     address = models.CharField(max_length=300)
     about = HTMLField()
     experience = models.CharField(max_length=5)
+    resume = models.FileField(upload_to="", null=True, blank=True)
     profile_pic = models.ImageField(upload_to="", null=True, blank=True)
 
     def __str__(self):

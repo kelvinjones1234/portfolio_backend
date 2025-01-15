@@ -9,7 +9,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-4r1pnlbvhysh@t4^mb&dng9i!+pd@iom*09k2p4(z%n3s^$6&@"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
@@ -125,6 +125,8 @@ MEDIA_ROOT = BASE_DIR / "media"
 STATIC_ROOT = BASE_DIR / "assets"
 MEDIA_URL = "/media/"
 STATIC_URL = "/assets/"
+
+
 
 
 # Default primary key field type
